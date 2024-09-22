@@ -1,0 +1,41 @@
+---
+version: "2.0"
+services:
+  schnell:
+    image: eluvietiee/flux:v0.9
+    expose:
+      - port: 7860
+        as: 80
+        to:
+          - global: true
+profiles:
+  compute:
+    schnell:
+      resources:
+        cpu:
+          units: 4
+        memory:
+          size: 32Gi
+        storage:
+          - size: 40Gi
+        gpu:
+          units: 1
+          attributes:
+            vendor:
+              nvidia:
+                - model: rtxa6000
+                - model: a40
+                - model: h100
+                - model: a100
+                - model: a800
+  placement:
+    dcloud:
+      pricing:
+        schnell:
+          denom: uakt
+          amount: 1000
+deployment:
+  schnell:
+    dcloud:
+      profile: schnell
+      count: 1
