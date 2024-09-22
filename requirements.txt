@@ -1,0 +1,16 @@
+accelerate
+git+https://github.com/huggingface/diffusers.git
+invisible_watermark
+torch
+transformers==4.42.4
+xformers
+sentencepiece
+datasets
+huggingface-hub>=0.19
+hf-transfer>=0.1.4
+protobuf<4
+pydantic==2.8.2
+click==8.0
+gradio==4.44.0
+uvicorn>=0.14.0
+fastapi==0.112.4
